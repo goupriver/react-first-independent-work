@@ -28,11 +28,11 @@ const ListFolder = ({
                   appear: 700,
                   enter: 1000,
                   exit: 700,
-                 }}
+                }}
                 classNames={{
                   enterActive: 'animate__animated animate__lightSpeedInLeft',
                   exitActive: 'animate__animated animate__lightSpeedOutLeft',
-                 }}
+                }}
               >
                 <Folder
                   isActiveFolder={isActiveFolder}
