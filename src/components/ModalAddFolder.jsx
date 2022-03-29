@@ -8,13 +8,13 @@ const WrapperModal = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 80%;
   width: 50vw;
   z-index: 1;
 `;
 
 const Modal = styled.div`
-  position: relative;
+  position: absolute;
   width: 260px;
   display: flex;
   flex-direction: column;
