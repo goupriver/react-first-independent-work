@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { CSSTransition } from "react-transition-group";
+
 import AllFolder from "./AllFolder";
 import ListFolder from "./ListFolder";
 import AddFolderButt from "./AddFolderButt";
@@ -32,9 +34,19 @@ const WrapperDir = (props) => {
         folders={props.folders}
       />
       <AddFolderButt setStatusModal={setStatusModal} />
-      {statusModal ? (
+      <CSSTransition
+        unmountOnExit
+        in={statusModal}
+        timeout={{
+          appear: 200,
+          enter: 500,
+          exit: 500,
+        }} classNames={{
+          enter: 'animate__animated animate__flipInX',
+          exit: 'animate__animated animate__flipOutX',
+        }}>
         <ModalAddFolder {...props} setStatusModal={setStatusModal} />
-      ) : null}
+      </CSSTransition>
     </WrapperDirectory>
   );
 };
