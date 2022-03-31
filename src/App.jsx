@@ -1,11 +1,12 @@
 import "animate.css";
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import WrapperDir from "./components/WrapperDir";
 import AllFolders from "./Tasks/AllFolders";
 import Tasks from "./Tasks/WrapperTasks";
 import useDB from "./hooks/useDB";
+import useActiveFolder from "./hooks/useActiveFolder";
 
 const WrapperApp = styled.div`
   display: flex;
@@ -14,8 +15,8 @@ const WrapperApp = styled.div`
 
 function App() {
   const [folders, setFolders] = useState("");
-  useDB('saveData', folders, setFolders)
-  const [isActiveFolder, setIsActiveFolder] = useState("");
+  useDB(folders, setFolders)
+  const [isActiveFolder, setIsActiveFolder] = useActiveFolder(folders)
 
   // активная папка
   const getActiveFolder = () => {
@@ -26,14 +27,14 @@ function App() {
   // добавить папку
   const addFolder = (newData) => {
     const folderId = Date.now();
+    setIsActiveFolder(folderId, 'add');
     setFolders([...folders, { folderId, ...newData, tasks: "" }]);
-    setIsActiveFolder(folderId);
   };
 
   // удалить папку
   const removeFolder = (removeFolderid) => {
+    setIsActiveFolder(removeFolderid)
     setFolders(folders.filter((folder) => folder.folderId !== removeFolderid));
-    setIsActiveFolder("");
   };
 
   // добавить задачу

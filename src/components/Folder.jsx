@@ -55,7 +55,7 @@ const Folder = ({ folder, removeFolder, setIsActiveFolder, isActiveFolder}) => {
   }
 
   return (
-    <LI active={isActiveFolder} folderId={folder.folderId} onClick={() => setIsActiveFolder(folder.folderId)}>
+    <LI active={isActiveFolder} folderId={folder.folderId} onClick={() => setIsActiveFolder(folder.folderId, 'checkout')}>
       <ColorCircle color={useHashColor(folder.colorId)} />
       <Text>{folder.folderName}</Text>
       <DeleteFolder
