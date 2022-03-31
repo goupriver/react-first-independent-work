@@ -1,10 +1,11 @@
 import "animate.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import styled from "styled-components";
 
 import WrapperDir from "./components/WrapperDir";
 import AllFolders from "./Tasks/AllFolders";
 import Tasks from "./Tasks/WrapperTasks";
+import useDB from "./hooks/useDB";
 
 const WrapperApp = styled.div`
   display: flex;
@@ -13,21 +14,8 @@ const WrapperApp = styled.div`
 
 function App() {
   const [folders, setFolders] = useState("");
+  useDB('saveData', folders, setFolders)
   const [isActiveFolder, setIsActiveFolder] = useState("");
-
-  // import from DB
-  useEffect(()=> {
-    if(!localStorage.getItem('saveData')) return
-    const data = JSON.parse(localStorage.getItem('saveData'))
-    setFolders(data)
-  }, [])
-
-  // export to DB
-  useEffect(()=> {
-    if(!folders) return
-    const data = JSON.stringify(folders)
-    localStorage.setItem('saveData', data)
-  }, [folders])
 
   // активная папка
   const getActiveFolder = () => {
