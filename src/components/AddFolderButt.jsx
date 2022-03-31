@@ -29,9 +29,15 @@ const Text = styled.span`
   padding-left: 10px;
 `;
 
-const AddFolderButt = ({setStatusModal}) => {
+const AddFolderButt = ({ setStatusModal }) => {
+
+  const setStatModal = e => {
+    setStatusModal(true)
+    e.stopPropagation()
+  }
+
   return (
-    <AddFolderButton onClick={() => setStatusModal(true)}>
+    <AddFolderButton onClick={setStatModal}>
       <SVG
         width="12"
         height="12"

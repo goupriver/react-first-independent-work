@@ -20,8 +20,13 @@ const WrapperDirectory = styled.div`
 const WrapperDir = (props) => {
   const [statusModal, setStatusModal] = useState(false);
 
+  const resetActiveFolder = (event) => {
+    event.stopPropagation();
+    props.setIsActiveFolder(null, "reset");
+  };
+
   return (
-    <WrapperDirectory>
+    <WrapperDirectory onClick={resetActiveFolder}>
       <AllFolder
         isActiveFolder={props.isActiveFolder}
         folders={props.folders}
@@ -41,10 +46,12 @@ const WrapperDir = (props) => {
           appear: 200,
           enter: 500,
           exit: 500,
-        }} classNames={{
-          enter: 'animate__animated animate__flipInX',
-          exit: 'animate__animated animate__flipOutX',
-        }}>
+        }}
+        classNames={{
+          enter: "animate__animated animate__flipInX",
+          exit: "animate__animated animate__flipOutX",
+        }}
+      >
         <ModalAddFolder {...props} setStatusModal={setStatusModal} />
       </CSSTransition>
     </WrapperDirectory>

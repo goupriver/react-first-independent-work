@@ -12,9 +12,11 @@ const LI = styled.li`
   padding: 14px 15px;
   border-radius: 4px;
   box-shadow: ${({ isActiveFolder }) =>
-    isActiveFolder === 'allFolders' ? "rgba(0, 0, 0, 0.25) 0px 1px 3px" : "none"};
+    isActiveFolder === "allFolders"
+      ? "rgba(0, 0, 0, 0.25) 0px 1px 3px"
+      : "none"};
   background-color: ${({ isActiveFolder }) =>
-    isActiveFolder === 'allFolders' ? "#ffffff" : "none"};
+    isActiveFolder === "allFolders" ? "#ffffff" : "none"};
 `;
 
 const SVG = styled.svg`
@@ -33,12 +35,14 @@ const Text = styled.div`
 const AllFolder = ({ setIsActiveFolder, folders, isActiveFolder }) => {
   const [stebel, setStebel] = useState("animate__animated");
 
-  const showAllFolders = () => {
-    if (folders.length >= 1) setIsActiveFolder(null, 'allFolders');
+  const showAllFolders = (e) => {
+    if (folders.length >= 1) setIsActiveFolder(null, "allFolders");
     else {
       setStebel("animate__animated animate__shakeX");
       setTimeout(() => setStebel("animate__animated"), 1500);
     }
+
+    e.stopPropagation();
   };
 
   return (
