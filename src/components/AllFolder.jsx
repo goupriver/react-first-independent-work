@@ -34,7 +34,7 @@ const AllFolder = ({ setIsActiveFolder, folders, isActiveFolder }) => {
   const [stebel, setStebel] = useState("animate__animated");
 
   const showAllFolders = () => {
-    if (folders.length >= 1) setIsActiveFolder("allFolders");
+    if (folders.length >= 1) setIsActiveFolder(null, 'allFolders');
     else {
       setStebel("animate__animated animate__shakeX");
       setTimeout(() => setStebel("animate__animated"), 1500);

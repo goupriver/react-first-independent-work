@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
-const useDB = (nameDB, homeData, setData) => {
+const useDB = (homeData, setData) => {
   useEffect(() => {
-    if (!localStorage.getItem(nameDB)) return
-    const data = JSON.parse(localStorage.getItem(nameDB))
+    if (!localStorage.getItem('saveData')) return
+    const data = JSON.parse(localStorage.getItem('saveData'))
     setData(data)
   }, [])
 
   useEffect(() => {
     if (!homeData) return
     const data = JSON.stringify(homeData)
-    localStorage.setItem(nameDB, data)
+    localStorage.setItem('saveData', data)
   }, [homeData])
 }
 
