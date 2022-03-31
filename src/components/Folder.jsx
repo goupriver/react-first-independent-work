@@ -46,16 +46,28 @@ const DeleteFolder = styled.svg`
   transition: opacity 0.5s ease;
 `;
 
-const Folder = ({ folder, removeFolder, setIsActiveFolder, isActiveFolder}) => {
+const Folder = ({
+  folder,
+  removeFolder,
+  setIsActiveFolder,
+  isActiveFolder,
+}) => {
+  const removeFolderFunc = (event) => {
+    removeFolder(folder.folderId);
+    event.stopPropagation();
+  };
 
-  const removeFolderFunc = event => {
-    removeFolder(folder.folderId)
-    
-    event.stopPropagation()
-  }
+  const setActiveFolder = (e) => {
+    setIsActiveFolder(folder.folderId, "checkout");
+    e.stopPropagation();
+  };
 
   return (
-    <LI active={isActiveFolder} folderId={folder.folderId} onClick={() => setIsActiveFolder(folder.folderId, 'checkout')}>
+    <LI
+      active={isActiveFolder}
+      folderId={folder.folderId}
+      onClick={setActiveFolder}
+    >
       <ColorCircle color={useHashColor(folder.colorId)} />
       <Text>{folder.folderName}</Text>
       <DeleteFolder
