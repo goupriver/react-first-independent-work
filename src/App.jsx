@@ -9,7 +9,6 @@ import useDB from "./hooks/useDB";
 
 const WrapperApp = styled.div`
   display: flex;
-  height: 100vh;
 `;
 
 function App() {

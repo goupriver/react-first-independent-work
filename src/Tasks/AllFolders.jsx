@@ -5,9 +5,10 @@ import AllTitle from "./AllTitle";
 
 const Wrapper = styled.div`
   background: #ffffff;
-  height: 100%;
   width: 100%;
   padding: ${({ theme }) => theme.size.paddingTask};
+  max-height: 100vh;
+  overflow-y: auto;
 `;
 
 const FolderInside = styled.div`

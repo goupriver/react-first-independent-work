@@ -27,7 +27,7 @@ export const variables = {
 export const GlobalStyle = createGlobalStyle`
 
 body {
-  height: 100vh;
+  overflow: hidden;
   font-family: 'Roboto', -apple-system, system-ui, sans-serif;
   color: #000;
 }

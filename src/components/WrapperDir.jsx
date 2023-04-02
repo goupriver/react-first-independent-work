@@ -15,6 +15,8 @@ const WrapperDirectory = styled.div`
   min-height: 100%;
   border-right: 1px solid #f1f1f1;
   padding: ${({ theme }) => theme.size.paddingTop};
+  height: 100vh;
+  overflow-y: auto;
 `;
 
 const WrapperDir = (props) => {
